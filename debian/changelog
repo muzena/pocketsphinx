@@ -1,0 +1,66 @@
+pocketsphinx (0.8.0+real5prealpha-1ubuntu2) xenial; urgency=medium
+
+  * Merge from Debian (mangling the version).
+  * Re-base on current Debian packaging.
+  * Enable parallel builds.
+  * pocketsphinx: Provide pocketsphinx-utils.
+  * Split out a pocketsphinx-doc package.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 09 Feb 2016 16:26:30 +0100
+
+pocketsphinx (0.8+5prealpha-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Rename libpocketsphinx1 to libpocketsphinx3 according to soname bump.
+    - Remove python-pocketsphinx-dbg package.
+    - Rename gstreamer0.10-pocketsphinx to gstreamer1.0-pocketsphinx according
+    to upgrade to newer gstreamer.
+    - Remove python-pocketsphinx-dbg package.
+    - control: Replace cython with swig. Add dh-python build-dep. Bump
+    gstreamer version to 1.0 (Closes: #785864). Bump libsphinxbase-dev
+    dependency and add swig-sphinxbase.
+    - rules: Remove ad-hoc python rules.
+    - python-pocketsphinx.install: Install files.
+  * watch: drop odd versions.
+  * Bump Standards-Version to 3.9.6 (no changes).
+  * control: Drop multiarch-support pre-depend.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 24 Oct 2015 16:23:01 +0200
+
+pocketsphinx (0.8-5) unstable; urgency=medium
+
+  * Use dh-autoreconf (Closes: #727268)
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 22 Aug 2014 00:02:05 +0200
+
+pocketsphinx (0.8-4) unstable; urgency=low
+
+  * rules: remove python/pocketsphinx.c on clean to make it regenerated with
+    fixed cython.
+  * Bump Standards-Version to 3.9.5 (no changes).
+  * Ignore testsuite result on big-endian archs.  They are supposed to be
+    supported, just seemingly have some (already reported) bugs
+    (Closes: #734278).
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 05 Jan 2014 17:13:27 +0100
+
+pocketsphinx (0.8-3) unstable; urgency=low
+
+  * docs: Do not ship useless README file (Closes: #706661)
+  * control: Add missiong python-pocketsphinx dependency on python-sphinxbase
+    (Closes: #706663). Thanks Paul Wise for the report!
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 03 May 2013 11:00:56 +0200
+
+pocketsphinx (0.8-2) unstable; urgency=low
+
+  * control: Build-Depend on gstreamer0.10-plugins-base to get the
+    audioresample plugin, needed for test_gst (Closes: #705753)
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 19 Apr 2013 16:44:51 +0200
+
+pocketsphinx (0.8-1) unstable; urgency=low
+
+  * Initial release (Closes: #697152)
+
+ -- Samuel Thibault <sthibault@debian.org>  Wed, 02 Jan 2013 02:14:16 +0100

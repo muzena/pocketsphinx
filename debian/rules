@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+DEB_HOST_MULTIARCH  ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+export DEB_BUILD_HARDENING=1
+
+%:
+	dh $@  --parallel --with autoreconf,python2
+
+override_dh_auto_configure:
+	dh_auto_configure -- --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
+
+# Ignore testsuite failure on big-endian archs
+ifneq (,$(filter $(shell dpkg-architecture -qDEB_HOST_ARCH),mips powerpc powerpcspe ppc64 s390x sparc sparc64))
+override_dh_auto_test:
+	-dh_auto_test
+endif
+
+override_dh_clean:
+	dh_clean
+	-rm -f python/pocketsphinx.c
+	-$(RM) -r python/build
+
+override_dh_installdocs:
+	dh_installdocs
+	if [ -d debian/pocketsphinx-doc/usr/share/doc/pocketsphinx-doc ]; then \
+	  mkdir -p debian/pocketsphinx-doc/usr/share/doc/pocketsphinx; \
+	  mv debian/pocketsphinx-doc/usr/share/doc/pocketsphinx-doc/html debian/pocketsphinx-doc/usr/share/doc/pocketsphinx/; \
+	  ln -sf ../pocketsphinx/html debian/pocketsphinx-doc/usr/share/doc/pocketsphinx-doc/html; \
+	  ln -sf /usr/share/javascript/jquery/jquery.js debian/pocketsphinx-doc/usr/share/doc/pocketsphinx/html/jquery.js; \
+	fi
+
+override_dh_auto_install:
+	dh_auto_install
+	for file in $$(find debian/tmp/usr/lib/ -name "*.la"); do \
+		rm $$file ; \
+	done

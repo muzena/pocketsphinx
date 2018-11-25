@@ -1,0 +1,93 @@
+Source: pocketsphinx
+Priority: extra
+Maintainer: Debian Accessibility Team <debian-accessibility@lists.debian.org>
+Uploaders: Samuel Thibault <sthibault@debian.org>
+Build-Depends: debhelper (>= 8.0.0), dh-autoreconf, pkg-config, doxygen,
+ libsphinxbase-dev (>= 0.8+5prealpha~), swig-sphinxbase, libgstreamer1.0-dev, libgstreamer-plugins-base1.0-dev,
+ gstreamer1.0-plugins-base,
+ python-all-dev (>= 2.6.6-3~), python-all-dbg, swig, dh-python
+Standards-Version: 3.9.6
+Section: sound
+Homepage: http://cmusphinx.sourceforge.net/
+Vcs-Git: git://git.debian.org/pkg-a11y/pocketsphinx.git
+Vcs-Browser: http://git.debian.org/?p=pkg-a11y/pocketsphinx.git;a=summary
+
+Package: pocketsphinx
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: pocketsphinx-utils
+Provides: pocketsphinx-utils
+Suggests: pocketsphinx-doc
+Description: Speech recognition tool
+ CMU Sphinx is a large vocabulary, speaker-independent continuous speech
+ recognition engine.
+ .
+ This package contains end-user speech recognition tools.
+
+Package: pocketsphinx-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}, libjs-jquery
+Replaces: pocketsphinx
+Description: Speech recognition tool (documentation)
+ CMU Sphinx is a large vocabulary, speaker-independent continuous speech
+ recognition engine.
+ .
+ This package contains the documentation.
+
+Package: gstreamer1.0-pocketsphinx
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Speech recognition tool - gstreamer plugin
+ CMU Sphinx is a large vocabulary, speaker-independent continuous speech
+ recognition engine.
+ .
+ This package contains the gstreamer plugin
+
+Package: pocketsphinx-en-us
+Architecture: all
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Speech recognition tool - US English language model
+ CMU Sphinx is a large vocabulary, speaker-independent continuous speech
+ recognition engine.
+ .
+ This package contains the default US English language model for
+ PocketSphinx.
+
+Package: libpocketsphinx-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libpocketsphinx3 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Speech recognition tool - front-end library development files
+ CMU Sphinx is a large vocabulary, speaker-independent continuous speech
+ recognition engine.
+ .
+ This package contains header files and static libraries for devloping programs
+ that use the Pocket Shinx frontend.
+
+Package: libpocketsphinx3
+Section: libs
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: pocketsphinx-hmm-en-hub4wsj | pocketsphinx-hmm-zh-tdt | pocketsphinx-hmm-en-tidigits,
+ pocketsphinx-lm-en-hub4 | pocketsphinx-lm-zh-hans-gigatdt | pocketsphinx-lm-zh-hant-gigatdt
+Description: Speech recognition tool - front-end library
+ CMU Sphinx is a large vocabulary, speaker-independent continuous speech
+ recognition engine.
+ .
+ This package contains the frontend shared library
+
+Package: python-pocketsphinx
+Section: python
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, python-sphinxbase
+Description: Speech recognition tool - python bindings
+ CMU Sphinx is a large vocabulary, speaker-independent continuous speech
+ recognition engine.
+ .
+ This package contains python bindings for libpocketsphinx.

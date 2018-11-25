@@ -1,0 +1,6 @@
+pocketsphinx for Debian
+-----------------------
+
+model files can be worked on by using the sphinxbase tools, including being
+converted back to a human-readable format by using sphinx_lm_convert,
+pocketsphinx_mdef_convert tools, or directly worked on by using sphinxtrain.
