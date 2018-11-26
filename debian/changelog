@@ -1,4 +1,4 @@
-pocketsphinx (0.8.0.1) xenial; urgency=medium
+pocketsphinx (0.8.1) cosmic urgency=emergency
 
   * Merge from Debian (mangling the version).
   * Re-base on current Debian packaging.
